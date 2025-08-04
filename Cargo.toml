@@ -1,0 +1,26 @@
+[package]
+name = "win_mitigations"
+version = "0.1.1"
+authors = ["AndreiHan <hanandrei.git@gmail.com>"]
+description = "Rust library for Windows process mitigation policies"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/AndreiHan/win_mitigations"
+keywords = ["windows", "mitigations", "security", "process", "policy"]
+categories = ["security", "no-std", "os::windows-apis", "no-std::no-alloc", "api-bindings"]
+edition = "2024"
+
+[lib]
+name = "win_mitigations"
+
+[dependencies]
+windows = { version = "0.61.3", features = [
+  "Win32_Foundation",
+  "Win32_System_LibraryLoader",
+  "Win32_System_Threading",
+  "Win32_System_SystemServices",
+  "Wdk_System_Threading",
+] }
+
+[package.metadata.docs.rs]
+default-target = "x86_64-pc-windows-msvc"
+targets = []
