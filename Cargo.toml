@@ -1,6 +1,6 @@
 [package]
 name = "win_mitigations"
-version = "0.1.2"
+version = "0.1.3"
 authors = ["AndreiHan <hanandrei.git@gmail.com>"]
 description = "Rust library for Windows process mitigation policies"
 license = "MIT OR Apache-2.0"

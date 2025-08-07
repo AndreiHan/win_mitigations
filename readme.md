@@ -1,9 +1,4 @@
-
-<p align="center">
-    <img src="https://raw.githubusercontent.com/AndreiHan/win_mitigations/master/assets/logo.png" alt="win_mitigations" width="120" />
-</p>
-
-# win_mitigations
+# `win_mitigations`
 
 <p align="center">
     <a href="https://crates.io/crates/win_mitigations"><img src="https://img.shields.io/crates/v/win_mitigations.svg?style=flat-square" alt="Crates.io"></a>
@@ -44,7 +39,7 @@
 Add to your `Cargo.toml`:
 
 ```toml
-win_mitigations = "0.1.1"
+win_mitigations = "0.1.3"
 ```
 
 ## Usage
