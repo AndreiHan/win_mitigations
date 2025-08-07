@@ -1,4 +1,23 @@
+#![doc = r"
+# Extension Point Policy
+
+[Microsoft Docs: Disable extension points](https://learn.microsoft.com/en-us/defender-endpoint/exploit-protection-reference#disable-extension-points)
+
+[API Reference](https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-process_mitigation_extension_point_disable_policy)
+
+Example:
+```rust
+use win_mitigations::extension_point::ExtensionPointPolicy;
+fn main() -> Result<(), windows::core::Error> {
+    ExtensionPointPolicy::new()
+        .set_disable_extension_points(true)
+        .build()?;
+    Ok(())
+}
+```
+"]
 #![cfg(windows)]
+
 #[derive(Clone, Copy)]
 pub struct ExtensionPointPolicy {
     policy:

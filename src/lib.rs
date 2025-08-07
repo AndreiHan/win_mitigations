@@ -1,4 +1,5 @@
 #![cfg(windows)]
+#![doc = include_str!("../readme.md")]
 pub mod aslr;
 pub mod binary_signature;
 pub mod child_process;

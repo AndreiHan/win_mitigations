@@ -1,4 +1,24 @@
+#![doc = r"
+# Address Space Layout Randomization (ASLR)
+
+[Microsoft Docs: ASLR](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/overview-of-threat-mitigations-in-windows-10#address-space-layout-randomization)
+
+[API Reference](https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-process_mitigation_aslr_policy)
+
+Example:
+```no_run
+use win_mitigations::aslr::AslrPolicy;
+fn main() -> Result<(), windows::core::Error> {
+    AslrPolicy::new()
+        .set_enable_high_entropy(true)
+        .set_enable_force_relocate_images(true)
+        .build()?;
+    Ok(())
+}
+```
+"]
 #![cfg(windows)]
+
 #[derive(Clone, Copy)]
 pub struct AslrPolicy {
     policy: windows::Win32::System::SystemServices::PROCESS_MITIGATION_ASLR_POLICY,

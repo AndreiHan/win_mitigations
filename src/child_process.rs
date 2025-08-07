@@ -1,4 +1,36 @@
+#![doc = r"
+# Child Process Policy
+
+[API Reference](https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-process_mitigation_child_process_policy)
+
+Example:
+```rust
+use win_mitigations::child_process::ChildProcessPolicy;
+fn main() -> Result<(), windows::core::Error> {
+    ChildProcessPolicy::new()
+        .set_no_child_process_creation(true)
+        .build()?;
+    Ok(())
+}
+```
+"]
 #![cfg(windows)]
+
+/// # Child Process Policy
+///
+/// [Microsoft Docs: Don't allow child processes](https://learn.microsoft.com/en-us/defender-endpoint/exploit-protection-reference#disable-win32k-system-calls)
+/// [API Reference](https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-process_mitigation_child_process_policy)
+///
+/// Example:
+/// ```rust
+/// use win_mitigations::child_process::ChildProcessPolicy;
+/// fn main() -> Result<(), windows::core::Error> {
+///     ChildProcessPolicy::new()
+///         .set_no_child_process_creation(true)
+///         .build()?;
+///     Ok(())
+/// }
+/// ```
 #[derive(Clone, Copy)]
 pub struct ChildProcessPolicy {
     policy: windows::Win32::System::SystemServices::PROCESS_MITIGATION_CHILD_PROCESS_POLICY,

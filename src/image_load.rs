@@ -1,4 +1,23 @@
+#![doc = r"
+# Image Load Policy
+
+[Microsoft Docs: Block remote images](https://learn.microsoft.com/en-us/defender-endpoint/exploit-protection-reference#block-low-integrity-images)
+
+[API Reference](https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-process_mitigation_image_load_policy)
+
+Example:
+```rust
+use win_mitigations::image_load::ImageLoadPolicy;
+fn main() -> Result<(), windows::core::Error> {
+    ImageLoadPolicy::new()
+        .set_no_remote_images(true)
+        .build()?;
+    Ok(())
+}
+```
+"]
 #![cfg(windows)]
+
 #[derive(Clone, Copy)]
 pub struct ImageLoadPolicy {
     policy: windows::Win32::System::SystemServices::PROCESS_MITIGATION_IMAGE_LOAD_POLICY,

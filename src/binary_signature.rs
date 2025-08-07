@@ -1,4 +1,21 @@
+#![doc = r"
+# Binary Signature Policy (Code Integrity Guard)
+
+[API Reference](https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-process_mitigation_binary_signature_policy)
+
+Example:
+```rust
+use win_mitigations::binary_signature::BinarySignaturePolicy;
+fn main() -> Result<(), windows::core::Error> {
+    let mut policy = BinarySignaturePolicy::new();
+    policy.set_microsoft_signed_only(true);
+    policy.build()?;
+    Ok(())
+}
+```
+"]
 #![cfg(windows)]
+
 #[derive(Clone, Copy)]
 pub struct BinarySignaturePolicy {
     policy: windows::Win32::System::SystemServices::PROCESS_MITIGATION_BINARY_SIGNATURE_POLICY,

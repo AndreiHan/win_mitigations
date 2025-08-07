@@ -1,4 +1,23 @@
+#![doc = r"
+# Font Disable Policy
+
+[Microsoft Docs: Block untrusted fonts](https://learn.microsoft.com/en-us/defender-endpoint/exploit-protection-reference#block-untrusted-fonts)
+
+[API Reference](https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-process_mitigation_font_disable_policy)
+
+Example:
+```rust
+use win_mitigations::font_disable::FontDisablePolicy;
+fn main() -> Result<(), windows::core::Error> {
+    FontDisablePolicy::new()
+        .set_disable_non_system_fonts(true)
+        .build()?;
+    Ok(())
+}
+```
+"]
 #![cfg(windows)]
+
 #[derive(Clone, Copy)]
 pub struct FontDisablePolicy {
     policy: windows::Win32::System::SystemServices::PROCESS_MITIGATION_FONT_DISABLE_POLICY,

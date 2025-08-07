@@ -1,4 +1,24 @@
+#![doc = r"
+# Strict Handle Policy
+
+[Microsoft Docs: Validate handle usage](https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-process_mitigation_strict_handle_check_policy)
+
+[API Reference](https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-process_mitigation_strict_handle_check_policy)
+
+Example:
+```rust
+use win_mitigations::strict_handle::StrictHandlePolicy;
+fn main() -> Result<(), windows::core::Error> {
+    StrictHandlePolicy::new()
+        .set_raise_exception_on_invalid_handle_reference(true)
+        .set_handle_exceptions_permanently_enabled(true)
+        .build()?;
+    Ok(())
+}
+```
+"]
 #![cfg(windows)]
+
 #[derive(Clone, Copy)]
 pub struct StrictHandlePolicy {
     policy: windows::Win32::System::SystemServices::PROCESS_MITIGATION_STRICT_HANDLE_CHECK_POLICY,

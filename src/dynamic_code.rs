@@ -1,4 +1,23 @@
+#![doc = r"
+# Dynamic Code Policy (Arbitrary Code Guard)
+
+[Microsoft Docs: Arbitrary code guard](https://learn.microsoft.com/en-us/defender-endpoint/exploit-protection-reference#mitigation-reference)
+
+[API Reference](https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-process_mitigation_dynamic_code_policy)
+
+Example:
+```rust
+use win_mitigations::dynamic_code::DynamicCodePolicy;
+fn main() -> Result<(), windows::core::Error> {
+    DynamicCodePolicy::new()
+        .set_prohibit_dynamic_code(true)
+        .build()?;
+    Ok(())
+}
+```
+"]
 #![cfg(windows)]
+
 #[derive(Clone, Copy)]
 pub struct DynamicCodePolicy {
     policy: windows::Win32::System::SystemServices::PROCESS_MITIGATION_DYNAMIC_CODE_POLICY,
