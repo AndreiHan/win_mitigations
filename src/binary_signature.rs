@@ -43,32 +43,37 @@ impl BinarySignaturePolicy {
 
     /// Corresponds to the `MicrosoftSignedOnly` flag.
     #[allow(clippy::missing_safety_doc)]
-    pub fn set_microsoft_signed_only(&mut self, status: bool) {
+    pub fn set_microsoft_signed_only(&mut self, status: bool) -> &mut Self {
         unsafe { self.policy.Anonymous.Flags |= u32::from(status) };
+        self
     }
 
     /// Corresponds to the `StoreSignedOnly` flag.
     #[allow(clippy::missing_safety_doc)]
-    pub fn set_store_signed_only(&mut self, status: bool) {
+    pub fn set_store_signed_only(&mut self, status: bool) -> &mut Self {
         unsafe { self.policy.Anonymous.Flags |= u32::from(status) << 1 };
+        self
     }
 
     /// Corresponds to the `MitigationOptIn` flag.
     #[allow(clippy::missing_safety_doc)]
-    pub fn set_mitigation_opt_in(&mut self, status: bool) {
+    pub fn set_mitigation_opt_in(&mut self, status: bool) -> &mut Self {
         unsafe { self.policy.Anonymous.Flags |= u32::from(status) << 2 };
+        self
     }
 
     /// Corresponds to the `AuditMicrosoftSignedOnly` flag.
     #[allow(clippy::missing_safety_doc)]
-    pub fn set_audit_microsoft_signed_only(&mut self, status: bool) {
+    pub fn set_audit_microsoft_signed_only(&mut self, status: bool) -> &mut Self {
         unsafe { self.policy.Anonymous.Flags |= u32::from(status) << 3 };
+        self
     }
 
     /// Corresponds to the `AuditStoreSignedOnly` flag.
     #[allow(clippy::missing_safety_doc)]
-    pub fn set_audit_store_signed_only(&mut self, status: bool) {
+    pub fn set_audit_store_signed_only(&mut self, status: bool) -> &mut Self {
         unsafe { self.policy.Anonymous.Flags |= u32::from(status) << 4 };
+        self
     }
 
     /// Sets a custom flag in the policy.
@@ -76,8 +81,9 @@ impl BinarySignaturePolicy {
     /// # Safety
     ///
     /// This function is unsafe because it allows arbitrary modification of the policy flags.
-    pub unsafe fn custom_set(&mut self, flag: u32, status: bool) {
+    pub unsafe fn custom_set(&mut self, flag: u32, status: bool) -> &mut Self {
         unsafe { self.policy.Anonymous.Flags |= u32::from(status) << flag };
+        self
     }
 }
 
