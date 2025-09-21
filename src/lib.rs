@@ -1,5 +1,7 @@
 #![cfg(windows)]
 #![doc = include_str!("../readme.md")]
+#![no_std]
+
 pub mod aslr;
 pub mod binary_signature;
 pub mod child_process;
@@ -21,8 +23,8 @@ pub fn set_process_mitigation_policy<T>(
     unsafe {
         windows::Win32::System::Threading::SetProcessMitigationPolicy(
             policy,
-            std::ptr::from_ref(policy_flags).cast::<core::ffi::c_void>(),
-            std::mem::size_of_val(policy_flags),
+            core::ptr::from_ref(policy_flags).cast::<core::ffi::c_void>(),
+            core::mem::size_of_val(policy_flags),
         )
     }
 }
